@@ -1,0 +1,7 @@
+{
+  "integration": {
+    "BaseUrl": "https://localhost:44386",
+    "UserBasketEndpoint": "/api/basket",
+    "ApiToIntegrationTimeoutInSeconds": 55
+  }
+}
