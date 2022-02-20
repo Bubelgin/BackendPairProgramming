@@ -26,7 +26,7 @@ namespace PairProgramming.Integration.Api
             services.ConfigureDependencyInjection(configuration);
             services.AddControllers(options =>
             {
-                options.Filters.Add<IntegrationRequestFilter<IntegrationRequestBaseDto>>();
+                options.Filters.Add<IntegrationRequestFilter<IntegrationRequestBase>>();
             });
         }
 

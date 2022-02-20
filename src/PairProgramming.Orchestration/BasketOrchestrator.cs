@@ -3,7 +3,6 @@ using AutoMapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PairProgramming.Common.Integration.ApiFacade;
-using PairProgramming.Common.Integration.Dto;
 using PairProgramming.Common.Integration.Dto.ApiToIntegration.Basket;
 using PairProgramming.Common.Services;
 using PairProgramming.Orchestration.Dtos;
@@ -34,8 +33,15 @@ namespace PairProgramming.Orchestration
         public async Task<OrchestrationGetBasketResponse> GetAsync(OrchestrationGetBasketRequest request)
         {
             var integrationRequest = mapper.Map<IntegrationGetUserBasketRequest>(request);
-            var result = await integrationService.GetUserBasket(integrationRequest) ?? new GetUserBasketResponseDto();
+            var result = await integrationService.GetUserBasket(integrationRequest) ?? new IntegrationGetUserBasketResponse();
             return mapper.Map<OrchestrationGetBasketResponse>(result);
+        }
+
+        public async Task<OrchestrationAddToBasketResponse> GetAsync(OrchestrationAddToBasketRequest request)
+        {
+            var integrationRequest = mapper.Map<IntegrationAddToUserBasketRequest>(request);
+            var result = await integrationService.AddToUserBasket(integrationRequest) ?? new IntegrationAddToUserBasketResponse();
+            return mapper.Map<OrchestrationAddToBasketResponse>(result);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -10,7 +9,6 @@ using Newtonsoft.Json;
 using PairProgramming.Common.Constants;
 using PairProgramming.Common.Integration;
 using PairProgramming.Common.Integration.ApiFacade;
-using PairProgramming.Common.Integration.Dto;
 using PairProgramming.Common.Integration.Dto.ApiToIntegration.Basket;
 using PairProgramming.Common.Services;
 
@@ -34,14 +32,14 @@ namespace PairProgramming.Api.Services
             client = httpClient;
         }
 
-        public async Task<GetUserBasketResponseDto> GetUserBasket(IntegrationGetUserBasketRequest request)
+        public async Task<IntegrationGetUserBasketResponse> GetUserBasket(IntegrationGetUserBasketRequest request)
         {
-            return await Execute<GetUserBasketResponseDto>(async () => await client.GetAsync(configuration.UserBasketEndpoint));
+            return await Execute<IntegrationGetUserBasketResponse>(async () => await client.GetAsync(configuration.UserBasketEndpoint));
         }
 
-        public async Task<IntegrationBasketResponse> AddToUserBasket(IntegrationAddToUserBasketRequest request)
+        public async Task<IntegrationAddToUserBasketResponse> AddToUserBasket(IntegrationAddToUserBasketRequest request)
         {
-            return await Execute(async () => await client.PostAsync(configuration.UserBasketEndpoint, ToStringContent(request)), async response => await response.Content.ReadAsAsync<IntegrationBasketResponse>());
+            return await Execute(async () => await client.PostAsync(configuration.UserBasketEndpoint, ToStringContent(request)), async response => await response.Content.ReadAsAsync<IntegrationAddToUserBasketResponse>());
         }
 
         private async Task<T> Execute<T>(Func<Task<HttpResponseMessage>> op, Func<HttpResponseMessage, Task<T>> errorHandler = null, [CallerMemberName] string callerName = "") where T : class

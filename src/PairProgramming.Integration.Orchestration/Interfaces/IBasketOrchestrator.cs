@@ -6,7 +6,7 @@ namespace PairProgramming.Integration.Orchestration.Interfaces
 {
     public interface IBasketOrchestrator
     {
-        Task<GetUserBasketResponseDto> GetUserBasket(IntegrationGetUserBasketRequest request);
-        Task<IntegrationBasketResponse> AddToUserBasket(IntegrationAddToUserBasketRequest request);
+        Task<IntegrationGetUserBasketResponse> GetUserBasket(IntegrationGetUserBasketRequest request);
+        Task<IntegrationAddToUserBasketResponse> AddToUserBasket(IntegrationAddToUserBasketRequest request);
     }
 }

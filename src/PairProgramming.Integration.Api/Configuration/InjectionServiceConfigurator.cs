@@ -14,7 +14,7 @@ namespace PairProgramming.Integration.Api.Configuration
         {
             services.AddLogging();
             services.AddMemoryCache();
-            services.AddScoped<IntegrationRequestFilter<IntegrationRequestBaseDto>>();
+            services.AddScoped<IntegrationRequestFilter<IntegrationRequestBase>>();
 
             services.AddScoped<IBasketOrchestrator, BasketOrchestrator>();
             services.AddSingleton<IUserBasketDataProvider, UserBasketDataProvider>();

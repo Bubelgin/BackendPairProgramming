@@ -6,7 +6,7 @@ using PairProgramming.Common.Integration.Dto.ApiToIntegration;
 
 namespace PairProgramming.Integration.Api.Filters
 {
-    public class IntegrationRequestFilter<T> : IActionFilter where T : IntegrationRequestBaseDto
+    public class IntegrationRequestFilter<T> : IActionFilter where T : IntegrationRequestBase
     {
         public void OnActionExecuted(ActionExecutedContext context)
         {

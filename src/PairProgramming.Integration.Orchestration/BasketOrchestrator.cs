@@ -15,16 +15,16 @@ namespace PairProgramming.Integration.Orchestration
             this.userBasketDataProvider = userBasketDataProvider;
         }
 
-        public async Task<GetUserBasketResponseDto> GetUserBasket(IntegrationGetUserBasketRequest request)
+        public async Task<IntegrationGetUserBasketResponse> GetUserBasket(IntegrationGetUserBasketRequest request)
         {
             var basketData = userBasketDataProvider.GetUserBasketData(request.SessionId);
-            return await Task.FromResult(new GetUserBasketResponseDto()
+            return await Task.FromResult(new IntegrationGetUserBasketResponse()
             {
                 BasketItems = basketData
             });
         }
 
-        public Task<IntegrationBasketResponse> AddToUserBasket(IntegrationAddToUserBasketRequest request)
+        public Task<IntegrationAddToUserBasketResponse> AddToUserBasket(IntegrationAddToUserBasketRequest request)
         {
             throw new System.NotImplementedException();
         }

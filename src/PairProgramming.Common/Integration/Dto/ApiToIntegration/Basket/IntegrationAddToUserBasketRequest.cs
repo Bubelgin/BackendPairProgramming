@@ -1,6 +1,6 @@
 ﻿namespace PairProgramming.Common.Integration.Dto.ApiToIntegration.Basket
 {
-    public class IntegrationAddToUserBasketRequest : IntegrationRequestBaseDto
+    public class IntegrationAddToUserBasketRequest : IntegrationRequestBase
     {
     }
 }

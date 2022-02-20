@@ -19,13 +19,13 @@ namespace PairProgramming.Integration.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<GetUserBasketResponseDto> GetUserBasket([FromQuery] IntegrationGetUserBasketRequest request)
+        public async Task<IntegrationGetUserBasketResponse> GetUserBasket([FromQuery] IntegrationGetUserBasketRequest request)
         {
             return await basketOrchestrator.GetUserBasket(request);
         }
 
         [HttpPost]
-        public async Task<IntegrationBasketResponse> AddToUserBasket(IntegrationAddToUserBasketRequest request)
+        public async Task<IntegrationAddToUserBasketResponse> AddToUserBasket(IntegrationAddToUserBasketRequest request)
         {
             return await basketOrchestrator.AddToUserBasket(request);
         }

@@ -2,7 +2,7 @@
 
 namespace PairProgramming.Common.Integration.Dto.ApiToIntegration
 {
-    public class IntegrationRequestBaseDto
+    public class IntegrationRequestBase
     {
         private string correlationId;
 

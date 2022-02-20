@@ -10,7 +10,7 @@ namespace PairProgramming.Orchestration.Automapper
         public OrchestrationBasketProfile()
         {
             this.CreateMap<OrchestrationGetBasketRequest, IntegrationGetUserBasketRequest>();
-            this.CreateMap<GetUserBasketResponseDto, OrchestrationGetBasketResponse>();
+            this.CreateMap<IntegrationGetUserBasketResponse, OrchestrationGetBasketResponse>();
         }
     }
 }

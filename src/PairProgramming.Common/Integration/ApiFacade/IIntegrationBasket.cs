@@ -6,7 +6,7 @@ namespace PairProgramming.Common.Integration.ApiFacade
 {
     public interface IIntegrationBasket
     {
-        Task<GetUserBasketResponseDto> GetUserBasket(IntegrationGetUserBasketRequest request);
-        Task<IntegrationBasketResponse> AddToUserBasket(IntegrationAddToUserBasketRequest request);
+        Task<IntegrationGetUserBasketResponse> GetUserBasket(IntegrationGetUserBasketRequest request);
+        Task<IntegrationAddToUserBasketResponse> AddToUserBasket(IntegrationAddToUserBasketRequest request);
     }
 }
