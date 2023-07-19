@@ -1,8 +1,7 @@
-﻿using System.Threading.Tasks;
-using PairProgramming.Common.Integration.Dto;
-using PairProgramming.Common.Integration.Dto.ApiToIntegration.Basket;
+﻿using PairProgramming.Common.Integration.Dto.ApiToIntegration.Basket;
 using PairProgramming.Integration.Data;
 using PairProgramming.Integration.Orchestration.Interfaces;
+using System.Threading.Tasks;
 
 namespace PairProgramming.Integration.Orchestration
 {

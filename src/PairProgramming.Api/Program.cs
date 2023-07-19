@@ -1,22 +1,19 @@
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PairProgramming.Api.Configuration;
 using System.IO;
 
-namespace PairProgramming.Api
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.ConfigureApiServices(builder.Environment);
+builder.Services.ConfigureOptionServices();
+builder.Services.ConfigureDependencyInjection();
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
-}
+builder.Services.AddApplicationInsightsTelemetry();
+
+builder.Host.ConfigureDefaults(args);
+builder.Host.UseContentRoot(Directory.GetCurrentDirectory());
+var app = builder.Build();
+app.ConfigureMvcApplication();
+app.ConfigureSwaggerApplication(app.Environment);
+app.Run();

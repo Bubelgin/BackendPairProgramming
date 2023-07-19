@@ -2,9 +2,9 @@
 
 namespace PairProgramming.Api.Configuration
 {
-    public class MvcApplicationConfigurer : IApplicationConfigurer
+    public static class MvcApplicationConfigurer
     {
-        public void ConfigureApplication(IApplicationBuilder application)
+        public static void ConfigureMvcApplication(this IApplicationBuilder application)
         {
             application.UseHsts();
             application.UseHttpsRedirection();

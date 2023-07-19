@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PairProgramming.Common.Integration.ApiFacade;
-using PairProgramming.Common.Integration.Dto;
 using PairProgramming.Common.Integration.Dto.ApiToIntegration.Basket;
 using PairProgramming.Integration.Orchestration.Interfaces;
+using System.Threading.Tasks;
 
 namespace PairProgramming.Integration.Api.Controllers
 {

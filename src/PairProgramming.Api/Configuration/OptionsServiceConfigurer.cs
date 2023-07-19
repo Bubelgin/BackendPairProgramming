@@ -5,16 +5,16 @@ using PairProgramming.Common.Integration;
 
 namespace PairProgramming.Api.Configuration
 {
-    public class OptionsServiceConfigurer : IServiceConfigurer
+    public static class OptionsServiceConfigurer
     {
-        public void ConfigureServices(IServiceCollection services, IWebHostEnvironment environment, IConfiguration configuration)
+        public static void ConfigureOptionServices(this IServiceCollection services)
         {
-            var config = GenerateConfiguration(environment, configuration);
+            var config = GenerateConfiguration();
             services.Configure<IntegrationServiceOptions>(config.GetSection(IntegrationServiceOptions.SectionKey));
             services.AddOptions();
         }
 
-        private static IConfigurationRoot GenerateConfiguration(IWebHostEnvironment environment,  IConfiguration configuration)
+        private static IConfigurationRoot GenerateConfiguration()
         {
             var builder = new ConfigurationBuilder();
             builder.AddJsonFile("./api-settings.json");

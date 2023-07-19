@@ -1,24 +1,22 @@
-﻿using System.Globalization;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using PairProgramming.Common.Helpers;
-using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using PairProgramming.Api.Filters;
 using PairProgramming.Api.Swagger;
 using PairProgramming.Common.Constants;
+using PairProgramming.Common.Helpers;
+using System.Globalization;
+using System.Linq;
 
 namespace PairProgramming.Api.Configuration
 {
-    public class ApiServiceConfigurer : IServiceConfigurer
+    public static class ApiServiceConfigurer
     {
-        public void ConfigureServices(IServiceCollection services, IWebHostEnvironment environment, IConfiguration configuration)
+        public static void ConfigureApiServices(this IServiceCollection services, IWebHostEnvironment environment)
         {
             services.Configure<IISServerOptions>(opt => { opt.AutomaticAuthentication = false; });
 
@@ -27,7 +25,7 @@ namespace PairProgramming.Api.Configuration
             {
                 config.Filters.Add<AppKeyFilterAttribute>();
                 config.Filters.Add<CustomSessionActionFilter>();
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            });
 
             services.AddApiVersioning();
             builder.AddDataAnnotations();

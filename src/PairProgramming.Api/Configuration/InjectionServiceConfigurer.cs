@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Reflection;
-using AutoMapper;
-using Microsoft.AspNetCore.Hosting;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using PairProgramming.Api.Processors;
@@ -17,12 +9,18 @@ using PairProgramming.Common.Integration.ApiFacade;
 using PairProgramming.Common.Services;
 using PairProgramming.Orchestration;
 using PairProgramming.Orchestration.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Reflection;
 
 namespace PairProgramming.Api.Configuration
 {
-    public class InjectionServiceConfigurer : IServiceConfigurer
+    public static class InjectionServiceConfigurer
     {
-        public void ConfigureServices(IServiceCollection services, IWebHostEnvironment environment, IConfiguration configuration)
+        public static void ConfigureDependencyInjection(this IServiceCollection services)
         {
             ConfigureGenericApiServices(services);
             ConfigureGenericApiServices(services);
@@ -54,12 +52,12 @@ namespace PairProgramming.Api.Configuration
             });
         }
 
-        private void ConfigureAuthentication(IServiceCollection services)
+        private static void ConfigureAuthentication(IServiceCollection services)
         { 
             services.AddScoped<ICurrentUser, CurrentUser>();
         }
 
-        private void ConfigureBasket(IServiceCollection services)
+        private static void ConfigureBasket(IServiceCollection services)
         {
             services.AddScoped<IOrchestrator<OrchestrationGetBasketRequest, OrchestrationGetBasketResponse>, BasketOrchestrator>();
         }
@@ -71,7 +69,7 @@ namespace PairProgramming.Api.Configuration
             services.AddScoped(typeof(IApiProcessor<>), typeof(DefaultApiProcessor<>));
         }
 
-        private void ConfigureHttpClientBuilders(IServiceCollection services)
+        private static void ConfigureHttpClientBuilders(IServiceCollection services)
         {
             services.AddHttpClient("default")
                 .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler()

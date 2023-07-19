@@ -32,11 +32,11 @@ namespace PairProgramming.Api.Services
         public async Task<IActionResult> GetResponseAsync(TApiRequest input)
         {
             var request = this.mapper.Map<TOrchestratorRequest>(input);
-            var orchestrationResponse = await this.orchestrator.GetAsync(request).ConfigureAwait(false);
+            var orchestrationResponse = await this.orchestrator.GetAsync(request);
             this.processor.Process(orchestrationResponse);
 
             var apiResponse = this.mapper.Map<TApiResponse>(orchestrationResponse);
-            apiResponse.Links = this.httpContextAccessor.HttpContext.Request.Path.Value;
+            apiResponse.Links = this.httpContextAccessor.HttpContext!.Request.Path.Value;
 
             return new OkObjectResult(apiResponse);
         }

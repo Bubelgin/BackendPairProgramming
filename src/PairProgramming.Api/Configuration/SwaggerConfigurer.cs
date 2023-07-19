@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace PairProgramming.Api.Services
+namespace PairProgramming.Api.Configuration
 {
-    public class SwaggerConfigurer : IApplicationEnvironmentConfigurer
+    public static class SwaggerConfigurer
     {
-        public void ConfigureApplication(IApplicationBuilder application, IWebHostEnvironment environment)
+        public static void ConfigureSwaggerApplication(this IApplicationBuilder application, IWebHostEnvironment environment)
         {
             if (environment.IsDevelopment())
             {
